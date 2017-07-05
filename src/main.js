@@ -7,6 +7,38 @@ const $logOfShame = $('.log')
 require('./main.scss')
 $('.banner').removeClass('hidden')
 
+const $shameLog = $('<div class="log__item">')
+
+function render(data) {
+  const $containerOfRegrets = $('<div>')
+
+  data.forEach(pieceOfShame => {
+    if (pieceOfShame.events.length === 0) return
+
+    const $shamefulLogEvents = $('<ol class="feed">')
+
+    $containerOfRegrets.append($(`<h2 class="heading heading--log">${pieceOfShame.name}</h2>`))
+
+    pieceOfShame.events.forEach(cringeMoment => {
+      const $cringeInstance = $('<li class="feed__list-item">')
+      const $title = $('<h3 class="title">')
+        .text(cringeMoment.title)
+        .append($('<span class="date">')
+        .text(moment(cringeMoment.eventDate).format('YYYY-MM-DD')))
+      $cringeInstance.append($title)
+      $cringeInstance
+        .append($('<p class="description">')
+        .text(cringeMoment.description))
+
+      $shamefulLogEvents.append($cringeInstance)
+    })
+
+    $containerOfRegrets.append($shamefulLogEvents)
+  })
+
+  return $containerOfRegrets
+}
+
 axios.get('shame.json')
   .then((response) => {
     response.data.map(pieceOfShame => {
@@ -31,27 +63,24 @@ axios.get('shame.json')
 
       $shameBox.append($shamefulEvents)
       $walkOfShame.append($shameBox)
+    })
 
-      /// //////////////////////
+    $logOfShame.append(render(response.data))
 
-      const $shameLog = $('<div class="log__item">')
-      const $shamefulLogEvents = $('<ol class="feed">')
+    let $anxiety = $('<input class="filter" placeholder="Filter regrets..." />').keyup(embarrassment => {
+      let query = embarrassment.currentTarget.value.trim().toLowerCase()
+      if (!query.length) return
 
-      $shameLog.append($(`<h2 class="heading heading--log">${pieceOfShame.name}</h2>`))
-
-      pieceOfShame.events.map(cringeMoment => {
-        const $cringeInstance = $('<li class="feed__list-item">')
-        const $title = $('<h3 class="title">').text(cringeMoment.title)
-          .append($('<span class="date">').text(moment(cringeMoment.eventDate).format('YYYY-MM-DD')))
-        $cringeInstance.append($title)
-        $cringeInstance.append($('<p class="description">').text(cringeMoment.description))
-
-        $shamefulLogEvents.append($cringeInstance)
+      let filtered = response.data.filter(pieceOfShame => {
+        if (!pieceOfShame.events.length) return
+        return pieceOfShame.name.toLowerCase().indexOf(query) != -1
       })
 
-      $shameLog.append($shamefulLogEvents)
-      $logOfShame.append($shameLog)
+      $logOfShame.empty()
+      $logOfShame.append(render(filtered))
     })
+
+    $logOfShame.before($anxiety)
   })
   .catch((error) => {
     console.log(error)
