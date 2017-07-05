@@ -1,0 +1,20 @@
+{
+  "extends": "standard",
+  "plugins": [
+    "standard"
+  ],
+  "globals": {
+  },
+  "rules": {
+    "class-methods-use-this": "error",
+    "complexity": ["warn", 2],
+    "no-else-return": "error",
+    "no-empty-function": "error",
+    "no-eq-null": "error",
+    "no-new": "off",
+    "no-useless-escape": "error",
+    "prefer-arrow-callback": "error",
+    "prefer-template": "error",
+    "valid-jsdoc": "error"
+  }
+}
