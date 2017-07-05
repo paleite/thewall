@@ -4,6 +4,7 @@
     "standard"
   ],
   "globals": {
+    "$": true
   },
   "rules": {
     "class-methods-use-this": "error",
