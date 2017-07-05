@@ -6,17 +6,24 @@
   "scripts": {
     "build": "webpack",
     "build:watch": "webpack --watch",
-    "serve": "http-server dist/"
+    "serve": "http-server dist/",
+    "lint": "npm run eslint; npm run sasslint",
+    "eslint": "eslint *.js src/*.js",
+    "sasslint": "sass-lint -v src/main.scss",
+    "fix": "eslint --fix *.js src/*.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "animate.css": "^3.5.2",
     "axios": "^0.16.2",
     "bluebird": "^3.5.0",
     "cheerio": "^1.0.0-rc.2",
     "http-server": "^0.10.0",
     "jquery": "^3.2.1",
-    "moment": "^2.18.1"
+    "moment": "^2.18.1",
+    "normalize.css": "^7.0.0",
+    "postcss-loader": "^2.0.6"
   },
   "devDependencies": {
     "css-loader": "^0.28.4",

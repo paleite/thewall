@@ -1,7 +1,8 @@
 import axios from 'axios'
 import moment from 'moment'
 
-const $walkOfShame = $('#feed')
+$('.banner').removeClass('hidden').addClass('animated shake')
+const $walkOfShame = $('.feed')
 
 require('./main.scss')
 
@@ -21,7 +22,7 @@ axios.get('shame.json')
       pieceOfShame.events.map(cringeMoment => {
         const $cringeInstance = $('<li>')
         const $title = $('<h3 class="title">').text(cringeMoment.title)
-          .append($('<span class="date">').text(moment(cringeMoment.eventDate).format("YYYY-MM-DD")))
+          .append($('<span class="date">').text(moment(cringeMoment.eventDate).format('YYYY-MM-DD')))
         $cringeInstance.append($title)
         $cringeInstance.append($('<p class="description">').text(cringeMoment.description))
 

@@ -1,0 +1,25 @@
+options:
+  merge-default-rules: true
+rules:
+  bem-depth:
+    - 2
+  class-name-format:
+    - 2
+    - convention: hyphenatedbem
+  nesting-depth:
+    - 2
+    - max-depth: 3
+  no-extends: 2
+  no-trailing-zero: 0
+  no-transition-all: 2
+  property-sort-order:
+    - 1
+    -
+      order: 'concentric'
+  variable-for-property:
+    - 1
+    - properties:
+        - 'box-shadow'
+        - 'color'
+        - 'font'
+        - 'text-shadow'
