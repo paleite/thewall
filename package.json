@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "build:watch": "webpack --watch",
+    "serve": "http-server dist/"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +14,12 @@
     "axios": "^0.16.2",
     "bluebird": "^3.5.0",
     "cheerio": "^1.0.0-rc.2",
-    "moment": "^2.18.1"
+    "moment": "^2.18.1",
+    "http-server": "^0.10.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "webpack": "^3.0.0"
   }
 }

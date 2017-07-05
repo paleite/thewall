@@ -3,7 +3,6 @@ const Promise = require('bluebird')
 const axios = require('axios')
 const cheerio = require('cheerio')
 const moment = require('moment')
-moment.locale('sv')
 
 const baseUrl = 'http://downdetector.se/problem-storningar/'
 const servicesList = [
@@ -16,7 +15,6 @@ const servicesList = [
   'sparbanken-oresund',
   'swedbank'
 ]
-
 const prettyNames = {
   bankik: 'BankID',
   getswish: 'Swish',
@@ -27,7 +25,6 @@ const prettyNames = {
   sparbanken: 'Sparbanken Öresund',
   swedbank: 'Swedbank'
 }
-
 const output = {}
 
 Promise.map(servicesList, (serviceId) => {
@@ -38,6 +35,7 @@ Promise.map(servicesList, (serviceId) => {
     .get(url)
     .then((response) => {
       const $ = cheerio.load(response.data)
+      moment.locale($('html').attr('lang'))
 
       $('.event').each((i, elm) => {
         const eventDateString = $('h2 span.date', elm).text().trim()
