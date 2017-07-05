@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Swedbank",
+    "events": [
+      {"timestamp": "12345", "name": "SHAME", "message": "SHAME SHAME SHAME"}
+    ]
+  },
+  {
+    "name": "BankID",
+    "events": [
+      {"timestamp": "12345", "name": "SHAME", "message": "BOOO!"}
+    ]
+  }
+]
