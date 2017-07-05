@@ -11,7 +11,7 @@ const servicesList = [
   'handelsbanken',
   'nordea',
   'seb',
-  'skandia',
+  'skandia-banken',
   'sparbanken-oresund',
   'swedbank'
 ]
@@ -21,8 +21,8 @@ const prettyNames = {
   handelsbanken: 'Handelsbanken',
   nordea: 'Nordea',
   seb: 'SEB',
-  skandia: 'Skandiabanken',
-  sparbanken: 'Sparbanken Öresund',
+  'skandia-banken': 'Skandiabanken',
+  'sparbanken-oresund': 'Sparbanken Öresund',
   swedbank: 'Swedbank'
 }
 const output = {}
