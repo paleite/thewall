@@ -17,7 +17,7 @@ function render(data) {
 
     const $shamefulLogEvents = $('<ol class="feed">')
 
-    $containerOfRegrets.append($(`<h2 class="heading heading--log">${pieceOfShame.name}</h2>`))
+    $containerOfRegrets.append($(`<h2 class="heading heading--log"><a name="${normalizeString(pieceOfShame.name)}">${pieceOfShame.name}</a></h2>`))
 
     pieceOfShame.events.forEach(cringeMoment => {
       const $cringeInstance = $('<li class="feed__list-item">')
@@ -39,6 +39,10 @@ function render(data) {
   return $containerOfRegrets
 }
 
+function normalizeString(string) {
+  return string.toLowerCase().replace(/\s/g, '_')
+}
+
 axios.get('shame.json')
   .then((response) => {
     response.data.map(pieceOfShame => {
@@ -46,7 +50,7 @@ axios.get('shame.json')
         return
       }
 
-      const $shameBox = $('<div class="box">')
+      const $shameBox = $('<div class="box">').data('href', normalizeString(pieceOfShame.name));
       const $shamefulEvents = $('<ol class="hotboard__list">')
 
       $shameBox.append($(`<h2 class="heading heading--box">${pieceOfShame.name}</h2>`))
@@ -62,6 +66,7 @@ axios.get('shame.json')
       })
 
       $shameBox.append($shamefulEvents)
+      $shameBox.on('click', e => location.hash = $(e.currentTarget).data('href'))
       $walkOfShame.append($shameBox)
     })
 
