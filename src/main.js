@@ -15,13 +15,12 @@ axios.get('shame.json')
       }
 
       const $shameBox = $('<div class="box">')
-      const $shamefulName = $(`<h2>${pieceOfShame.name}</h2>`)
-      const $shamefulEvents = $('<ol>')
+      const $shamefulEvents = $('<ol class="hotboard__list">')
 
-      $shameBox.append($shamefulName)
+      $shameBox.append($(`<h2 class="heading heading--box">${pieceOfShame.name}</h2>`))
 
       pieceOfShame.events.slice(0, 1).map(cringeMoment => {
-        const $cringeInstance = $('<li>')
+        const $cringeInstance = $('<li class="hotboard__list-item">')
         const $title = $('<h3 class="title">').text(cringeMoment.title)
           .append($('<span class="date">').text(moment(cringeMoment.eventDate).format('YYYY-MM-DD')))
         $cringeInstance.append($title)
@@ -33,15 +32,15 @@ axios.get('shame.json')
       $shameBox.append($shamefulEvents)
       $walkOfShame.append($shameBox)
 
-      /////////////////////////
+      /// //////////////////////
 
       const $shameLog = $('<div class="log__item">')
-      const $shamefulLogEvents = $('<ol>')
+      const $shamefulLogEvents = $('<ol class="feed">')
 
-      $shameLog.append($shamefulName)
+      $shameLog.append($(`<h2 class="heading heading--log">${pieceOfShame.name}</h2>`))
 
       pieceOfShame.events.map(cringeMoment => {
-        const $cringeInstance = $('<li>')
+        const $cringeInstance = $('<li class="feed__list-item">')
         const $title = $('<h3 class="title">').text(cringeMoment.title)
           .append($('<span class="date">').text(moment(cringeMoment.eventDate).format('YYYY-MM-DD')))
         $cringeInstance.append($title)

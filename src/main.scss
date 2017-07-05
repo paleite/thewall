@@ -13,6 +13,7 @@ $rainbow-color-purple: #dd00f3;
 $transparent-grey: rgba(255, 255, 255, .7);
 
 $type-black: #333;
+$hotboard-item-background: #fff;
 
 * {
   box-sizing: border-box;
@@ -33,18 +34,13 @@ body {
 
 }
 
-h2 {
+.heading {
   text-transform: uppercase;
   letter-spacing: -.02em;
-  text-align: center;
-}
 
-ol {
-  padding: 0;
-}
-
-li {
-  display: block;
+  &#{&}--box {
+    text-align: center;
+  }
 }
 
 .container {
@@ -55,24 +51,38 @@ li {
 }
 
 .hotboard {
+  display: flex;
+  flex-wrap: wrap;
   padding: 30px 20px 50px;
   width: 100%;
   color: $type-black;
-  display: flex;
-  flex-wrap: wrap;
+
+  &__list {
+    padding: 0;
+  }
+
+  &__list-item {
+    display: block;
+  }
 }
 
 .box {
   flex: 0 1 calc(25% - 40px);
-  background: white;
   margin: 20px;
-  padding: 20px;
   border-radius: 20px;
+  background: $hotboard-item-background;
+  padding: 20px;
 }
 
 .banner__image {
   margin: 0 auto;
   width: 100%;
+}
+
+.log {
+  &__item {
+    padding: 10px 40px 20px;
+  }
 }
 
 .date {
