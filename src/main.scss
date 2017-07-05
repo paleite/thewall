@@ -19,7 +19,7 @@ $type-black: #333;
 }
 
 body {
-  animation: rainbow 1s ease infinite;
+  animation: rainbow 10s ease infinite;
   margin: 0;
   background: linear-gradient(124deg, $rainbow-color-red, $rainbow-color-burgundy, $rainbow-color-yellow, $rainbow-color-lime, $rainbow-color-green, $rainbow-color-turquiose, $rainbow-color-blue, $rainbow-color-purple);
   background-size: 1600% 1600%;
@@ -36,23 +36,43 @@ body {
 h2 {
   text-transform: uppercase;
   letter-spacing: -.02em;
+  text-align: center;
+}
+
+ol {
+  padding: 0;
+}
+
+li {
+  display: block;
 }
 
 .container {
   margin: 0 auto;
   background: $transparent-grey;
-  width: 700px;
+  width: 90%;
+  overflow: hidden;
+}
+
+.hotboard {
+  padding: 30px 20px 50px;
+  width: 100%;
+  color: $type-black;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box {
+  flex: 0 1 calc(25% - 40px);
+  background: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 .banner__image {
   margin: 0 auto;
   width: 100%;
-}
-
-.feed {
-  padding: 30px 20px 50px;
-  width: 100%;
-  color: $type-black;
 }
 
 .date {
