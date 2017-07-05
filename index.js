@@ -25,7 +25,7 @@ const prettyNames = {
   'sparbanken-oresund': 'Sparbanken Öresund',
   swedbank: 'Swedbank'
 }
-const output = {}
+const output = []
 
 Promise.map(servicesList, (serviceId) => {
   const url = `${baseUrl}${serviceId}/storningar-oversikt/`
@@ -57,11 +57,11 @@ Promise.map(servicesList, (serviceId) => {
       return events
     })
     .then((events) => {
-      output[serviceId] = {
+      output.push({
         name: prettyNames[serviceId],
         events
-      }
+      })
     })
 })
-  .then(() => fs.writeFileSync('shame.json', JSON.stringify(output, null, 2)))
+  .then(() => fs.writeFileSync('./dist/shame.json', JSON.stringify(output, null, 2)))
   .catch((reason) => console.error('Error:', reason))
