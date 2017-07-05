@@ -1,29 +1,34 @@
+import axios from 'axios'
+import moment from 'moment'
+
+const $walkOfShame = $('#feed')
+
 require('./main.scss')
-
-const axios = require('axios')
-
-let $walkOfShame = $('#feed')
-
-// console.log(walkOfShame) 
 
 axios.get('shame.json')
   .then((response) => {
-    // console.log(response.data)
-    response.data.forEach(pieceOfShame => {
-      let $shameBox = $('<div>')
+    response.data.map(pieceOfShame => {
+      if (pieceOfShame.events.length === 0) {
+        return
+      }
 
-      let $shamefulName = $(`<span>${pieceOfShame.name}</span>`)
+      const $shameBox = $('<div>')
+      const $shamefulName = $(`<h2>${pieceOfShame.name}</h2>`)
+      const $shamefulEvents = $('<ol>')
+
       $shameBox.append($shamefulName)
 
-      // let shamefulEvents = document.createElement('div')
-      // pieceOfShame.events.forEach(cringeMoment => {
-      // let cringeInstance = document.createElement('div')
-      // cringeInstance.appendChild(document.createTextNode(cringeMoment.message))
-      // shamefulEvents.appendChild(cringeInstance)
-      // })
+      pieceOfShame.events.map(cringeMoment => {
+        const $cringeInstance = $('<li>')
+        const $title = $('<h3 class="title">').text(cringeMoment.title)
+          .append($('<span class="date">').text(moment(cringeMoment.eventDate).format("YYYY-MM-DD")))
+        $cringeInstance.append($title)
+        $cringeInstance.append($('<p class="description">').text(cringeMoment.description))
 
-      // $shameBox.append($shamefulEvents)
+        $shamefulEvents.append($cringeInstance)
+      })
 
+      $shameBox.append($shamefulEvents)
       $walkOfShame.append($shameBox)
     })
   })

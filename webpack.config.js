@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const providePlugin = new webpack.ProvidePlugin({
   $: 'jquery'
 })
+const contextReplacementPlugin = new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-us/)
 
 module.exports = {
   context: __dirname,
@@ -11,7 +12,8 @@ module.exports = {
     filename: 'main.js'
   },
   plugins: [
-    providePlugin
+    providePlugin,
+    contextReplacementPlugin
   ],
 
   module: {
