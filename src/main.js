@@ -69,7 +69,6 @@ axios.get('shame.json')
 
     let $anxiety = $('<input class="filter" placeholder="Filter regrets..." />').keyup(embarrassment => {
       let query = embarrassment.currentTarget.value.trim().toLowerCase()
-      if (!query.length) return
 
       let filtered = response.data.filter(pieceOfShame => {
         if (!pieceOfShame.events.length) return
