@@ -7,6 +7,7 @@
     "build": "webpack",
     "build:watch": "webpack --watch",
     "serve": "http-server dist/",
+    "postinstall": "node index.js && npm run build",
     "lint": "npm run eslint; npm run sasslint",
     "eslint": "eslint *.js src/*.js",
     "sasslint": "sass-lint -v src/main.scss",
