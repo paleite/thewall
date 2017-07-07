@@ -51,6 +51,7 @@ body {
 }
 
 .hotboard {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   padding: 30px 20px 50px;
@@ -65,6 +66,21 @@ body {
     display: block;
   }
 }
+
+  .doge {
+    display: block;
+    width: 500px;
+    height: 500px;
+    right: 0;
+    bottom: 0;
+
+    position: absolute;
+    background-image: url('doge.png');
+    background-position: right -120px bottom -550px;
+    background-repeat: no-repeat;
+    background-size: 800px;
+    opacity: 0.5;
+  }
 
 .box {
   flex: 0 1 calc(25% - 40px);

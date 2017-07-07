@@ -17,7 +17,12 @@ module.exports = {
   ],
 
   module: {
-    rules: [{
+    rules: [
+      {
+        test: /\.jpe?g$|\.gif$|\.png$/i,
+        loader: "file-loader?name=[name].[ext]"
+      },
+      {
       test: /\.scss$/,
       use: [{
         loader: 'style-loader' // creates style nodes from JS strings
